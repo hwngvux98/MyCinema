@@ -9,7 +9,7 @@ export default function FilmRating({ number }) {
         className='align-center flex self-center'
         initialRating={number}
         emptySymbol={<FaRegStar />}
-        fullSymbol={<FaStar />}
+        fullSymbol={<FaStar class="fill-yellow-300"/>}
         readonly
       />
     </div>

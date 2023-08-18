@@ -12,6 +12,8 @@ export default function GenreMovie({ data, id, name, page }) {
   const isFirst = currentPage === 1
   const isLast = currentPage === data.total_pages
 
+  console.log(data)
+
   return (
     <div>
       <Head>

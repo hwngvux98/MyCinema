@@ -3,12 +3,12 @@ import { shimmer, toBase64 } from '../utils'
 
 export default function CardImage({ isTrending, src, alt }) {
   return (
-    <div className='relative w-full rounded-lg'>
+    <div className='relative rounded-lg'>
       <div
         className={
           isTrending
             ? 'relative h-[140px] w-[240px] after:absolute after:top-0 after:right-0 after:bottom-0 after:left-0 after:bg-app-dark-blue after:opacity-50 after:content-[""] sm:h-[230px] sm:w-[470px]'
-            : 'relative h-[133px] md:h-[140px] lg:h-[174px]'
+            : 'relative h-[200px] md:h-[200px] lg:h-[300px]'
         }>
         <Image
           className='rounded-lg'

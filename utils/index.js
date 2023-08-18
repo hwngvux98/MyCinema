@@ -4,14 +4,11 @@ export const TMDB_ENDPOINT = process.env.TMDB_ENDPOINT
 export const TMDB_API_KEY = process.env.TMDB_API_KEY
 export const TMDB_IMAGE_ENDPOINT = 'https://image.tmdb.org/t/p/original'
 
-
 export const pathToSearchAll = '/search/'
 export const pathToSearchMovie = '/search/movie/'
 export const pathToSearchTV = '/search/tv/'
 
-
 export const fetcher = url => fetch(url).then(res => res.json())
-
 
 export const shimmer = (w, h) => `
 <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -41,9 +38,9 @@ export const renderResults = (array, Component, media_type) => {
       category={item.media_type || media_type}
       rating={item.adult}
       src={
-        item.backdrop_path
-          ? `${TMDB_IMAGE_ENDPOINT}/${item.backdrop_path}`
-          : `${TMDB_IMAGE_ENDPOINT}/${item.poster_path}`
+        item.poster_path
+          ? `${TMDB_IMAGE_ENDPOINT}/${item.poster_path}`
+          : `${TMDB_IMAGE_ENDPOINT}/${item.backdrop_path}`
       }
       title={
         item.title ? item.title : item.original_name || item.original_title

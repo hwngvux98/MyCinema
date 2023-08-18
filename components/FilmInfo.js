@@ -1,4 +1,5 @@
 export default function FilmInfo({
+  infoType,
   firstAir,
   lastAir,
   language,
@@ -7,10 +8,16 @@ export default function FilmInfo({
   status,
   year,
 }) {
+  let textType = !infoType ? 'lg:text-lg' : 'lg:text-sm'
   return (
     <>
       {media_type === 'movie' ? (
-        <div className='mb-6 flex items-center justify-between text-left text-sm lg:w-10/12 lg:text-lg'>
+        <div
+          className={
+            'mb-6 flex items-center justify-between text-left text-sm lg:w-10/12 ' +
+            textType
+          }
+          infoType>
           <div>
             <p className='mb-1 text-app-placeholder'>Length</p>
             <p className='text-app-pure-white'>{length}</p>
@@ -29,7 +36,11 @@ export default function FilmInfo({
           </div>
         </div>
       ) : (
-        <div className='mb-6 flex items-center justify-between text-left text-sm lg:w-11/12 lg:text-lg'>
+        <div
+          className={
+            'mb-6 flex items-center justify-between text-left text-sm lg:w-10/12' +
+            textType
+          }>
           <div>
             <p className='mb-1 text-app-placeholder'>Language</p>
             <p className='text-app-pure-white'>{language}</p>
