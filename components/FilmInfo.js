@@ -8,6 +8,7 @@ export default function FilmInfo({
   status,
   year,
 }) {
+  console.log(infoType)
   let textType = !infoType ? 'lg:text-lg' : 'lg:text-sm'
   return (
     <>
@@ -16,8 +17,7 @@ export default function FilmInfo({
           className={
             'mb-6 flex items-center justify-between text-left text-sm lg:w-10/12 ' +
             textType
-          }
-          infoType>
+          }>
           <div>
             <p className='mb-1 text-app-placeholder'>Length</p>
             <p className='text-app-pure-white'>{length}</p>
