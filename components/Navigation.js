@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import ProfilePic from '../assets/image-avatar2.jpg'
+import ProfilePic from '../assets/image-ava.jpg'
 import AppLogo from './icons/AppIcon'
 import IconNavHome from './icons/IconNavHome'
 import IconNavMovie from './icons/IconNavMovie'
@@ -15,7 +15,7 @@ export default function Navigation() {
           <AppLogo />
         </a>
       </Link>
-      <div className='flex w-1/2 items-center justify-between lg:h-[200px] lg:flex-col 2xs:w-2/5'>
+      <div className='flex w-1/2 items-center justify-between 2xs:w-2/5 lg:h-[200px] lg:flex-col'>
         <NavigationIcon href='/'>
           <IconNavHome />
         </NavigationIcon>
@@ -29,17 +29,17 @@ export default function Navigation() {
           <IconNavBookmark />
         </NavigationIcon> */}
       </div>
-      <a href="https://github.com/Sayan-Maity" target="_blank" rel="noreferrer">
-      <div className='flex items-center justify-center rounded-full bg-cyan-200 p-px'>
-        <Image
-          className='rounded-full'
-          src={ProfilePic}
-          alt='user avatar'
-          height={25}
-          width={25}
-          unoptimized
-        />
-      </div>
+      <a href='https://github.com/hwngvux98' target='_blank' rel='noreferrer'>
+        <div className='flex items-center justify-center rounded-full bg-cyan-200 p-px'>
+          <Image
+            className='rounded-full'
+            src={ProfilePic}
+            alt='user avatar'
+            height={25}
+            width={25}
+            unoptimized
+          />
+        </div>
       </a>
     </nav>
   )

@@ -9,6 +9,13 @@
 }
 
 @layer components {
+  .iframe{      
+      display: block;  /* iframes are inline by default */   
+      height: 100vh;  /* Set height to 100% of the viewport height */   
+      width: 100vw;  /* Set width to 100% of the viewport width */     
+      border: none; /* Remove default border */
+      background: lightyellow; /* Just for styling */
+  }
   .heading-lg {
     @apply text-app-heading-lg font-light;
   }
@@ -57,7 +64,7 @@
   }
 
   .card-hover-animation {
-    @apply hover:animate-wiggle hover:even:animate-wiggle-opposite motion-reduce:transition-none motion-reduce:hover:transform-none;
+    @apply hover:animate-wiggle motion-reduce:transition-none motion-reduce:hover:transform-none;
   }
 
   /* Loading spinner */

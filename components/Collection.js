@@ -14,9 +14,11 @@ export default function Collection({
   limit = 8,
   media_type = 'movie',
   title,
-  type = 'movie'
+  type = 'movie',
 }) {
   const { data, error } = useSWR(endpoint, fetcher)
+
+  console.log(data)
 
   if (error) return <div>Error occurred</div>
 
@@ -39,7 +41,7 @@ export default function Collection({
           <section
             className={
               isTrending
-                ? 'h-scroll relative flex gap-x-4 overflow-x-scroll sm:gap-x-10 2xs:mt-2'
+                ? 'h-scroll relative flex gap-x-4 overflow-x-scroll 2xs:mt-2 sm:gap-x-10'
                 : 'card-collection-wrapper'
             }>
             {renderResults(

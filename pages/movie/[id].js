@@ -18,6 +18,13 @@ export default function Movie() {
   const { id } = router.query
   const { data: movie, error: movieError } = useSWR(`/api/movie/${id}`, fetcher)
 
+  const watchContent = () => {
+    console.log('test' + id)
+    router.push(`/movie/watch/${id}`)
+  }
+
+  console.log(movie)
+
   if (movieError) return <div>{movieError}</div>
   if (!movie) return <div>{movieError}</div>
 
@@ -31,11 +38,15 @@ export default function Movie() {
         searchPath={pathToSearchMovie}
       />
       {movie ? (
-        <section className='flex flex-col sm:mx-8 md:mx-0 md:flex-row md:items-start lg:justify-center'>
+        <section className='flex flex-col sm:mx-0 md:mx-0 md:flex-row md:items-start lg:justify-center'>
           <FilmImage
             src={movie.detail.poster_path}
             title={movie.detail.title}
+            handleNameClick={() => {
+              watchContent()
+            }}
           />
+
           <section className='md:w-3/5'>
             <FilmHeading
               tagline={movie.detail.tagline}

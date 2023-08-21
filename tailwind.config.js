@@ -8,8 +8,9 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        wiggle: 'wiggle 0.3s linear',
-        'wiggle-opposite': 'wiggleOpposite 0.3s linear',
+        wiggle: 'wiggle 1s ease-in-out infinite',
+        'wiggle-opposite': 'wiggleOpposite 1s linear',
+        bounce: 'bounce 1s infinite',
       },
       colors: {
         'app-pure-white': 'hsl(0, 0%, 100%)', // #FFFFFF
@@ -40,6 +41,16 @@ module.exports = {
           '0%, 100%': { transform: 'skewY(0deg)' },
           '50%': { transform: 'skewY(3deg)' },
         },
+        bounce: {
+          '0% 100%': {
+            transform: 'translateY(-10%)',
+            'animation-timining-function': 'cubic-bezier(0.8, 0, 1, 1)'
+          },
+          '50%': {
+            transform: 'translateY(0)',
+            'animation-timining-function': 'cubic-bezier(0, 0, 0.2, 1)'
+          }
+        }
       },
       screens: {
         '3xs': '320px',
