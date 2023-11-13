@@ -34,13 +34,13 @@ export default function Dropdown({ options, handleClick }) {
             onClick={() => {
               setOpen(!open)
             }}
-            class='w-48 justify-between rounded-md border-2 border-white bg-white px-2 py-2 text-gray-700 shadow '>
-            <span class='select-none'>{selectedOptionValue}</span>
+            className='w-48 justify-between rounded-md border-2 border-white bg-white px-2 py-2 text-gray-700 shadow '>
+            <span className='select-none'>{selectedOptionValue}</span>
           </button>
         </div>
 
         {open ? (
-          <div class='absolute z-20 mt-2 w-48 rounded-lg bg-white py-2 shadow-xl'>
+          <div className='absolute z-20 mt-2 w-48 rounded-lg bg-white py-2 shadow-xl'>
             <ul>
               {options.map((option, index) => (
                 <li
@@ -48,8 +48,8 @@ export default function Dropdown({ options, handleClick }) {
                     onSelectOption(option), setOpen(!open)
                   }}
                   key={option.id}
-                  class='block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white'>
-                  <a href='#' class='block text-sm'>
+                  className='block px-4 py-2 text-gray-800 hover:bg-indigo-500 hover:text-white'>
+                  <a href='#' className='block text-sm'>
                     {option.name}
                   </a>
                 </li>
