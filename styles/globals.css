@@ -63,6 +63,10 @@
     @apply flex flex-col items-center gap-4 sm:gap-x-7 sm:gap-y-6 xl:gap-x-10 xl:gap-y-8 2xs:flex-row 2xs:flex-wrap 2xs:justify-between;
   }
 
+  .card-collection-grid {
+    @apply grid lg:grid-cols-5 gap-4 md:grid-cols-4
+  }
+
   .card-hover-animation {
     @apply hover:animate-wiggle motion-reduce:transition-none motion-reduce:hover:transform-none;
   }

@@ -5,8 +5,8 @@ import SearchBar from '../components/SearchBar'
 import { pathToSearchAll } from '../utils'
 
 export default function Home() {
-  const limitNormal = 6
-  const limitTrending = 10
+  const limitNormal = 10
+  const limitTrending = 14
 
   return (
     <>

@@ -53,3 +53,43 @@ export const renderResults = (array, Component, media_type) => {
 export const sliceArray = (arr, limit) => {
   return arr.slice(0, limit)
 }
+
+export function renderRating(rating) {
+  if (rating !== undefined) {
+    return (rating / 2).toFixed(1)
+  } else {
+    return 0
+  }
+}
+
+export function renderLength(runtime) {
+  if (runtime !== 0 && runtime !== undefined) {
+    return runtime + ' min.'
+  } else {
+    return 'N/A'
+  }
+}
+
+export function renderLanguage(languages) {
+  if (languages.length !== 0) {
+    return languages[0].name
+  } else {
+    return 'N/A'
+  }
+}
+
+export function renderYear(year) {
+  if (!year) {
+    return 'N/A'
+  } else {
+    return year.substring(0, 4)
+  }
+}
+
+export function renderStatus(status) {
+  if (!status) {
+    return 'N/A'
+  } else {
+    return status
+  }
+}

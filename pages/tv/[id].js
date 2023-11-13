@@ -11,13 +11,25 @@ import FilmResources from '../../components/FilmResources'
 import FilmSynopsis from '../../components/FilmSynopsis'
 import Loading from '../../components/Loading'
 import SearchBar from '../../components/SearchBar'
-import { fetcher, pathToSearchTV } from '../../utils'
-import { renderLanguage, renderRating, renderStatus } from '../movie/[id]'
+import {
+  fetcher,
+  pathToSearchTV,
+  renderLanguage,
+  renderRating,
+  renderStatus,
+} from '../../utils'
 
 export default function TV() {
   const router = useRouter()
   const { id } = router.query
   const { data: tv, error: tvError } = useSWR(`/api/tv/${id}`, fetcher)
+
+  const watchContent = () => {
+    console.log('test' + id)
+    router.push(`/tv/watch/${id}`)
+  }
+
+  console.log(tv)
 
   if (tvError) return <div>{tvError}</div>
   if (!tv) return <div>{tvError}</div>
@@ -33,7 +45,13 @@ export default function TV() {
       />
       {tv ? (
         <section className='flex flex-col sm:mx-8 md:mx-0 md:flex-row md:items-start lg:justify-center'>
-          <FilmImage src={tv.detail.poster_path} title={tv.detail.name} />
+          <FilmImage
+            src={tv.detail.poster_path}
+            title={tv.detail.name}
+            handleNameClick={() => {
+              watchContent()
+            }}
+          />
           <section className='md:w-3/5'>
             <FilmHeading tagline={tv.detail.tagline} title={tv.detail.name} />
             <FilmRating number={renderRating(tv.detail.vote_average)} />

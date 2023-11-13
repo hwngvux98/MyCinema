@@ -14,13 +14,27 @@ import Loading from '../../../components/Loading'
 import PageTitle from '../../../components/PageTitle'
 import PaginationImproved from '../../../components/PaginationImproved'
 import SearchBar from '../../../components/SearchBar'
-import { fetcher, pathToSearchMovie } from '../../../utils'
+import {
+  fetcher,
+  pathToSearchMovie,
+  renderLanguage,
+  renderLength,
+  renderRating,
+  renderStatus,
+  renderYear,
+} from '../../../utils'
 
 export default function WatchMovies() {
   const router = useRouter()
   const { id } = router.query
   //   const currentPage = Number(id)
   const { data: movie, error: movieError } = useSWR(`/api/movie/${id}`, fetcher)
+  const { data: recommendedMovie, error: rcMovieError } = useSWR(
+    `/api/movie/recommendations/${id}`,
+    fetcher
+  )
+
+  console.log(recommendedMovie)
 
   const embedLink = `https://vidsrc.to/embed/movie/${id}`
 
@@ -41,7 +55,7 @@ export default function WatchMovies() {
       <PageTitle title={'Watching ' + movie.detail.title} />
       {movie ? (
         <>
-          <div className='flex'>
+          {/* <div className='flex'>
             <div className='mr-5 w-1/4 rounded-md border-transparent bg-app-greyish-blue py-3'>
               <section className=' sm:mx-5 md:my-10 md:items-start'>
                 <FilmImage
@@ -66,23 +80,18 @@ export default function WatchMovies() {
                   infoType='vertical'
                   genres={movie.detail.genres || []}
                 />
-                <FilmSynopsis
-                  infoType='vertical'
-                  synopsis={movie.detail.overview}
-                />
-                {/* <FilmCasts casts={movie.credits.cast} /> */}
-                {/* <FilmResources
-                website={movie.detail.homepage}
-                imdb={movie.detail.imdb_id}
-              /> */}
               </section>
             </div>
-            <div className='w-3/4 rounded-md bg-app-greyish-blue'>
-              <iframe src={embedLink} height={650} width='100%'></iframe>
-            </div>
+          </div> */}
+
+          <div className='rounded-md bg-app-greyish-blue pb-10'>
+            <iframe src={embedLink} height={650} width='100%' />
           </div>
 
           <div className='mt-5 rounded-md border-transparent bg-app-greyish-blue py-3'>
+            {/* <div className='rounded-md bg-app-greyish-blue'>
+              <iframe src={embedLink} height={650} width='100%' />
+            </div> */}
             <section className='flex flex-col sm:mx-5 md:my-10 md:flex-row md:items-start'>
               <FilmImage
                 src={movie.detail.poster_path}
@@ -112,50 +121,36 @@ export default function WatchMovies() {
               </section>
             </section>
           </div>
+          <div className='mt-20'>
+            <a className='text-3xl font-medium'>Recommended</a>
+            <div className='mt-10'>
+              {recommendedMovie ? (
+                <>
+                  <CollectionSearch
+                    isGenre
+                    arr={recommendedMovie.results.slice(0, 10)}
+                  />
+                  {/* <PaginationImproved
+                  currentPageAdvance={currentPage + 1}
+                  currentPage={currentPage}
+                  prevHref={`/movie/popular/${currentPage - 1}`}
+                  nextHref={`/movie/popular/${currentPage + 1}`}
+                  isFirst={isFirst}
+                  isLast={isLast}
+                  goToPreviousPage={() => currentPage - 1}
+                  goToNextPage={() => currentPage + 1}
+                  totalPages={data.total_pages}
+                /> */}
+                </>
+              ) : (
+                <Loading />
+              )}
+            </div>
+          </div>
         </>
       ) : (
         <Loading />
       )}
     </div>
   )
-}
-
-export function renderRating(rating) {
-  if (rating !== undefined) {
-    return (rating / 2).toFixed(1)
-  } else {
-    return 0
-  }
-}
-
-function renderLength(runtime) {
-  if (runtime !== 0 && runtime !== undefined) {
-    return runtime + ' min.'
-  } else {
-    return 'N/A'
-  }
-}
-
-export function renderLanguage(languages) {
-  if (languages.length !== 0) {
-    return languages[0].name
-  } else {
-    return 'N/A'
-  }
-}
-
-function renderYear(year) {
-  if (!year) {
-    return 'N/A'
-  } else {
-    return year.substring(0, 4)
-  }
-}
-
-export function renderStatus(status) {
-  if (!status) {
-    return 'N/A'
-  } else {
-    return status
-  }
 }
