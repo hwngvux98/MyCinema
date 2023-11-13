@@ -8,8 +8,7 @@ export default function FilmResources({ website, imdb, trailer }) {
           href={website}
           className='mb-4 mr-4 flex w-40 cursor-pointer items-center justify-between rounded-md border-none bg-app-greyish-blue py-3 px-8 text-sm font-medium text-app-pure-white hover:bg-app-pure-white hover:text-app-dark-blue'
           target='_blank'
-          rel='noreferrer'
-        >
+          rel='noreferrer'>
           <p>Website</p>
           <FaLink className='text-base' />
         </a>
@@ -19,8 +18,7 @@ export default function FilmResources({ website, imdb, trailer }) {
           href={`https://www.imdb.com/title/${imdb}`}
           className='mb-4 flex w-40 cursor-pointer items-center justify-between rounded-md border-none bg-app-greyish-blue py-3 px-8 text-sm font-medium text-app-pure-white hover:bg-app-pure-white hover:text-app-dark-blue'
           target='_blank'
-          rel='noreferrer'
-        >
+          rel='noreferrer'>
           <p>IMDB</p>
           <FaImdb className='text-base' />
         </a>
